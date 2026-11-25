@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday, LIAA</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600;1,9..144,800&family=DM+Sans:wght@400;500;700&display=swap">
+  <style>
+    :root {
+      --bg: #fff0f5;
+      --bg2: #ffe0ec;
+      --ink: #5a1a3a;
+      --soft: #a65a7d;
+      --pink: #ff6fa5;
+      --deep: #e8407f;
+      --card: #ffffffcc;
+      --line: #ffb6d0;
+      --sh: 0 10px 30px #e8407f33;
+      color-scheme: light;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #2a0f1e;
+        --bg2: #3d1630;
+        --ink: #ffe3ef;
+        --soft: #e9a3c3;
+        --card: #4a1c3acc;
+        --line: #8a3a64;
+        --sh: 0 10px 30px #0006;
+        color-scheme: dark
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      scrollbar-width: thin;
+      scrollbar-color: var(--pink) var(--bg2)
+    }
+
+    ::-webkit-scrollbar {
+      width: 9px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg2)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--pink), var(--deep));
+      border-radius: 9px;
+      border: 2px solid var(--bg2)
+    }
+
+    body {
+      font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100%
+    }
+
+    #main {
+      overflow-x: hidden
+    }
+
+    h1,
+    h2,
+    .script {
+      font-family: Fraunces, Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: -.01em
+    }
+
+    #bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0;
+      background: linear-gradient(90deg, #ffb6d0, var(--deep));
+      z-index: 50;
+      margin-top: env(safe-area-inset-top, 0px);
+      border-radius: 0 4px 4px 0
+    }
+
+    #hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0
+    }
+
+    #hearts i {
+      position: absolute;
+      bottom: -40px;
+      font-style: normal;
+      opacity: .5;
+      animation: up linear infinite
+    }
+
+    @keyframes up {
+      to {
+        transform: translateY(-115vh) rotate(40deg);
+        opacity: 0
+      }
+    }
+
+    canvas#cf {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 90
+    }
+
+    /* GATE */
+    #gate {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 20px;
+      background: radial-gradient(circle at 50% 20%, var(--bg2), var(--bg));
+      transition: opacity .9s, transform .9s, visibility .9s;
+      text-align: center;
+      overflow: auto
+    }
+
+    #gate.out {
+      opacity: 0;
+      transform: scale(1.08);
+      visibility: hidden
+    }
+
+    .cake {
+      position: relative;
+      width: 200px;
+      height: 190px;
+      margin-top: 6px;
+      animation: pop 1s cubic-bezier(.2, 1.4, .4, 1) both
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0) rotate(-12deg)
+      }
+    }
+
+    .cake .plate {
+      position: absolute;
+      bottom: 0;
+      left: -14px;
+      right: -14px;
+      height: 16px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 6px 14px #e8407f44
+    }
+
+    .L {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 14px 14px 6px 6px
+    }
+
+    .L1 {
+      bottom: 10px;
+      width: 200px;
+      height: 58px;
+      background: linear-gradient(#ff8fb8, #ff6fa5)
+    }
+
+    .L2 {
+      bottom: 62px;
+      width: 150px;
+      height: 50px;
+      background: linear-gradient(#ffd0e2, #ffb0cc)
+    }
+
+    .L3 {
+      bottom: 106px;
+      width: 104px;
+      height: 42px;
+      background: linear-gradient(#fff, #ffe1ec)
+    }
+
+    .drip {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -2px;
+      height: 14px;
+      background: radial-gradient(circle at 10px 0, #fff 9px, #0000 10px) 0 0/20px 14px repeat-x
+    }
+
+    .candle {
+      position: absolute;
+      bottom: 146px;
+      width: 8px;
+      height: 34px;
+      border-radius: 3px;
+      background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--pink) 5px, var(--pink) 10px)
+    }
+
+    .flame {
+      position: absolute;
+      left: 50%;
+      top: -22px;
+      width: 12px;
+      height: 20px;
+      margin-left: -6px;
+      border-radius: 50% 50% 50% 50%/65% 65% 35% 35%;
+      background: radial-gradient(#fff6b0, #ffb300 70%);
+      box-shadow: 0 0 16px 6px #ffd54f99;
+      transform-origin: 50% 100%;
+      animation: fl .5s ease-in-out infinite alternate
+    }
+
+    @keyframes fl {
+      to {
+        transform: scale(.88, 1.12) rotate(5deg)
+      }
+    }
+
+    .cake.blow .flame {
+      animation: none;
+      transform: scale(0);
+      opacity: 0;
+      transition: .5s
+    }
+
+    .cake.blow .candle::after {
+      content: "";
+      position: absolute;
+      left: 1px;
+      top: -30px;
+      width: 6px;
+      height: 26px;
+      background: #bbb;
+      border-radius: 50%;
+      filter: blur(4px);
+      opacity: 0;
+      animation: sm 1.2s ease-out
+    }
+
+    @keyframes sm {
+      20% {
+        opacity: .7
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(-26px)
+      }
+    }
+
+    .cake {
+      animation: pop 1s cubic-bezier(.2, 1.4, .4, 1) both, bob 3s 1s ease-in-out infinite
+    }
+
+    @keyframes bob {
+      50% {
+        transform: translateY(-6px)
+      }
+    }
+
+    #gate h1 {
+      font-size: clamp(1.6rem, 7vw, 2.2rem);
+      color: var(--deep)
+    }
+
+    #gate p {
+      color: var(--soft);
+      max-width: 300px;
+      font-weight: 600
+    }
+
+    .pin {
+      display: flex;
+      gap: 10px
+    }
+
+    .pin input {
+      width: 54px;
+      height: 64px;
+      border-radius: 16px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      text-align: center;
+      font: 700 1.7rem "DM Sans", sans-serif;
+      color: var(--ink);
+      outline: none;
+      transition: .2s;
+      box-shadow: var(--sh)
+    }
+
+    .pin input:focus {
+      border-color: var(--deep);
+      transform: translateY(-3px)
+    }
+
+    .pin.bad {
+      animation: sh .45s
+    }
+
+    .pin.bad input {
+      border-color: #e03355
+    }
+
+    @keyframes sh {
+
+      20%,
+      60% {
+        transform: translateX(-9px)
+      }
+
+      40%,
+      80% {
+        transform: translateX(9px)
+      }
+    }
+
+    #msg {
+      min-height: 1.4em;
+      font-size: .92rem;
+      color: #e03355;
+      font-weight: 700
+    }
+
+    /* MAIN */
+    #main {
+      display: none;
+      position: relative;
+      z-index: 1
+    }
+
+    #main.show {
+      display: block;
+      animation: fi 1.2s both
+    }
+
+    @keyframes fi {
+      from {
+        opacity: 0
+      }
+    }
+
+    section {
+      min-height: 100svh;
+      padding: 64px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      max-width: 760px;
+      margin: auto;
+      text-align: center
+    }
+
+    .sec h2 {
+      font-size: clamp(1.9rem, 8vw, 2.8rem);
+      color: var(--deep);
+    }
+
+    .sub {
+      color: var(--soft);
+      font-weight: 600
+    }
+
+    .rv {
+      opacity: 0;
+      transition: opacity .9s ease, transform .9s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    .rv[data-d="up"] {
+      transform: translateY(60px)
+    }
+
+    .rv[data-d="l"] {
+      transform: translateX(-70px)
+    }
+
+    .rv[data-d="r"] {
+      transform: translateX(70px)
+    }
+
+    .rv[data-d="z"] {
+      transform: scale(.6)
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none
+    }
+
+    /* hero */
+    #hero h1 {
+      font-size: clamp(2.6rem, 14vw, 4.8rem);
+      line-height: 1.02;
+      color: var(--deep);
+      font-weight: 800
+    }
+
+    #hero h1 span {
+      display: block;
+      font-size: .5em;
+      color: var(--pink);
+      font-weight: 600;
+      margin: .1em 0
+    }
+
+    .collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      width: min(88vw, 400px);
+      margin: 6px 0
+    }
+
+    .cw {
+      min-width: 0
+    }
+
+    .cw.a {
+      grid-column: 1/3
+    }
+
+    .pol {
+      background: #fff;
+      padding: 7px 7px 26px;
+      border-radius: 6px;
+      box-shadow: var(--sh);
+      position: relative
+    }
+
+    .pol img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 3px
+    }
+
+    .cw.a .pol {
+      transform: rotate(-1.5deg)
+    }
+
+    .cw.a img {
+      aspect-ratio: 1/1;
+      object-position: 56% 40%
+    }
+
+    .cw.b .pol {
+      transform: rotate(-3deg)
+    }
+
+    .cw.c .pol {
+      transform: rotate(3deg)
+    }
+
+    .cw.b img,
+    .cw.c img {
+      aspect-ratio: 1/1
+    }
+
+    .cw.b img {
+      object-position: 64% 40%
+    }
+
+    .cw.c img {
+      object-position: 55% 40%
+    }
+
+    .pol::after {
+      content: "♥";
+      position: absolute;
+      bottom: 3px;
+      right: 9px;
+      color: var(--pink);
+      font-size: .9rem
+    }
+
+    .btn {
+      border: 0;
+      background: linear-gradient(135deg, var(--pink), var(--deep));
+      color: #fff;
+      font: 700 1rem "DM Sans", sans-serif;
+      padding: 13px 26px;
+      border-radius: 40px;
+      box-shadow: var(--sh);
+      cursor: pointer;
+      transition: transform .2s
+    }
+
+    .btn:active {
+      transform: scale(.94)
+    }
+
+    .hint {
+      font-size: .85rem;
+      color: var(--soft);
+      animation: bob 2s infinite
+    }
+
+    /* cards */
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      border: 2px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: var(--sh);
+      width: 100%;
+      text-align: left
+    }
+
+    .frame {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 6px solid #fff;
+      box-shadow: var(--sh);
+      transform: rotate(-1.5deg)
+    }
+
+    .frame img {
+      display: block;
+      width: 100%
+    }
+
+    .ph {
+      color: var(--soft);
+      font-style: italic
+    }
+
+    .rail {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      width: calc(100% + 40px);
+      margin: 0 -20px;
+      padding: 10px 20px 22px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--pink) transparent
+    }
+
+    .rail::-webkit-scrollbar {
+      height: 7px
+    }
+
+    .rail::-webkit-scrollbar-thumb {
+      background: var(--pink);
+      border-radius: 9px;
+      border: 0
+    }
+
+    .rail::-webkit-scrollbar-track {
+      background: transparent
+    }
+
+    .tile {
+      flex: 0 0 82%;
+      max-width: 360px;
+      scroll-snap-align: center;
+      background: #fff;
+      border-radius: 22px;
+      padding: 8px 8px 14px;
+      box-shadow: var(--sh);
+      text-align: left;
+      color: #5a1a3a
+    }
+
+    .tile img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 16px
+    }
+
+    .tile h3 {
+      margin: 10px 6px 2px;
+      font-size: 1.05rem;
+      color: var(--deep)
+    }
+
+    .tile p {
+      margin: 0 6px;
+      font-size: .92rem;
+      color: #a65a7d
+    }
+
+    .tile.empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      background: transparent;
+      border: 3px dashed var(--pink);
+      box-shadow: none;
+      text-align: center;
+      gap: 4px
+    }
+
+    .tile.empty b {
+      font-size: 2.2rem;
+      color: var(--pink)
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+      margin-top: -8px
+    }
+
+    .dots i {
+      width: 8px;
+      height: 8px;
+      border-radius: 9px;
+      background: var(--line);
+      transition: .3s
+    }
+
+    .dots i.on {
+      width: 24px;
+      background: var(--deep)
+    }
+
+    .wish {
+      position: relative;
+      padding: 28px 24px;
+      text-align: left;
+      font-size: 1.05rem
+    }
+
+    .wish::before {
+      content: "❝";
+      position: absolute;
+      top: -8px;
+      left: 14px;
+      font-size: 3.6rem;
+      color: var(--pink);
+      line-height: 1
+    }
+
+    .sign {
+      margin-top: 14px;
+      text-align: right;
+      font-family: Fraunces, Georgia, serif;
+      font-style: italic;
+      color: var(--deep);
+      font-size: 1.4rem
+    }
+
+    footer {
+      padding: 30px 20px 50px;
+      text-align: center;
+      color: var(--soft);
+      font-weight: 600;
+      position: relative;
+      z-index: 1
+    }
+
+    /* mute button */
+    #muteBtn {
+      position: fixed;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      right: 20px;
+      z-index: 100;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--pink);
+      background: var(--deep);
+      box-shadow: 0 4px 18px #e8407f66;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s, opacity .2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    #muteBtn:active {
+      transform: scale(.84)
+    }
+
+    #muteBtn.muted {
+      background: #5a1a3a;
+      border-color: var(--soft)
+    }
+
+    #muteBtn .bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 20px
+    }
+
+    #muteBtn .bar span {
+      display: block;
+      width: 4px;
+      border-radius: 2px;
+      background: #fff;
+      animation: eq .7s ease-in-out infinite alternate
+    }
+
+    #muteBtn .bar span:nth-child(1) {
+      height: 7px;
+      animation-delay: 0s
+    }
+
+    #muteBtn .bar span:nth-child(2) {
+      height: 17px;
+      animation-delay: .15s
+    }
+
+    #muteBtn .bar span:nth-child(3) {
+      height: 12px;
+      animation-delay: .3s
+    }
+
+    #muteBtn .bar span:nth-child(4) {
+      height: 20px;
+      animation-delay: .1s
+    }
+
+    #muteBtn.muted .bar span {
+      animation: none;
+      height: 4px;
+      background: var(--soft)
+    }
+
+    #muteBtn .ico-mute {
+      display: none;
+      font-size: 1.4rem;
+      line-height: 1
+    }
+
+    #muteBtn.muted .bar {
+      display: none
+    }
+
+    #muteBtn.muted .ico-mute {
+      display: block
+    }
+
+    @keyframes eq {
+      to {
+        transform: scaleY(0.25)
+      }
+    }
+
+    @media (min-width: 720px) {
+      #muteBtn {
+        bottom: 32px;
+        right: 32px;
+        width: 56px;
+        height: 56px
+      }
+    }
+
+    @media (min-width:720px) {
+      .tile {
+        flex-basis: 340px
+      }
+
+      .rail {
+        width: 100%;
+        margin: 0;
+        padding-inline: 4px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        animation-duration: .01s !important;
+        transition-duration: .01s !important
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bar"></div>
+  <div id="hearts"></div>
+  <canvas id="cf"></canvas>
+
+  <audio id="bgm" src="assets/ATEEZ - Choose.mp3" loop preload="auto"></audio>
+  <button id="muteBtn" aria-label="Mute/Unmute musik" title="Mute/Unmute">
+    <div class="bar"><span></span><span></span><span></span><span></span></div>
+    <span class="ico-mute">🔇</span>
+  </button>
+
+  <!-- HALAMAN 1: KUE + KODE -->
+  <div id="gate">
+    <div class="cake" id="cake">
+      <div class="candle" style="left:62px">
+        <div class="flame"></div>
+      </div>
+      <div class="candle" style="left:96px">
+        <div class="flame" style="animation-delay:.15s"></div>
+      </div>
+      <div class="candle" style="left:130px">
+        <div class="flame" style="animation-delay:.3s"></div>
+      </div>
+      <div class="L L3">
+        <div class="drip"></div>
+      </div>
+      <div class="L L2">
+        <div class="drip" style="filter:hue-rotate(0)"></div>
+      </div>
+      <div class="L L1">
+        <div class="drip"></div>
+      </div>
+      <div class="plate"></div>
+    </div>
+    <h1>Ada kejutan buat kamu</h1>
+    <p>Tanggal ulang tahun kamu?<br><small>(4 angka: tanggal + bulan)</small></p>
+    <div class="pin" id="pin">
+      <input inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 1" autocomplete="off">
+      <input inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 2" autocomplete="off">
+      <input inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 3" autocomplete="off">
+      <input inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 4" autocomplete="off">
+    </div>
+    <div id="msg" role="alert"></div>
+  </div>
+
+  <!-- HALAMAN 2 -->
+  <main id="main">
+    <!-- SECTION 1 -->
+    <section id="hero" class="sec">
+      <p class="script rv" data-d="up" style="font-size:1.3rem;color:var(--soft)">Selamat ulang tahun</p>
+      <h1 class="rv" data-d="z">HAPPY<span>BIRTHDAY</span>LIAA!</h1>
+      <div class="collage">
+        <div class="cw a rv" data-d="z">
+          <div class="pol"><img src="assets/1.jpeg" alt="Foto Liaa di pantai saat senja"></div>
+        </div>
+        <div class="cw b rv" data-d="l">
+          <div class="pol"><img src="assets/2.jpeg" alt="Foto Liaa tersenyum"></div>
+        </div>
+        <div class="cw c rv" data-d="r">
+          <div class="pol"><img src="assets/3.jpeg" alt="Foto Liaa dengan latar langit senja"></div>
+        </div>
+      </div>
+      <button class="btn rv" data-d="up" id="party">Tebar confetti 🎉</button>
+      <p class="hint">geser ke bawah ♡</p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="throw" class="sec">
+      <h2 class="rv" data-d="up">Throwback</h2>
+      <p class="sub rv" data-d="up">Awal kita ketemu</p>
+      <div class="frame rv" data-d="l"><img src="assets/7.png" alt="Screenshot Roblox pertama kali kita main bareng">
+      </div>
+      <div class="card rv" data-d="r">
+        <p class="ph">Halo adek onlen akuh. kita flashback dulu nih gimana cara kita dipertemukan awkwkwkw. Terimakasih
+          malem itu udah mampir ke kazehara,
+          Map yang aku buat iseng2 buat pelampiasan stres karna kehidupan dewasa, siapa sangka malah bikin aku ketemu
+          temen onlen yang udh kek temen RL yang dah lama ga ketemu.
+          Malem itu, aku lagi patroli di kaze, namanya juga owner gabut, dan seneng bgt lagi map nya ada yang mainin,
+          tiba2 partner gueh si pakde abe manggil2...
+          Tau2nya nemu anak bogel rambut pink yang lagi survive sendirian awkawkak. dan berakhirlah kita clon ava kamu
+          dan temenin kamu sampe puncak.
+          Kupikir aku bakal cuma ketemu ava bogel pink itu sekali, "ah paling besok ga kesini lagi" tapi ternyata,
+          bahkan sampe kaze udh jadi kuburan berhantu pun kamu masih main.
+          Terimakasih banya ya hihihi.... banyak cerita ya dikaze, kenal orang2 baru, bahkan ada yang pernah jadi rumah
+          singgah, bahkan sekarang bisa banget nih nemu yang awalnya nobody sekarang jadi somebody haha,
+          dari yg awalnya nothing sekarang jadi something, akur2 ya kalian warga2 aku di kaze, aku slalu doakan yg
+          terbaik buat kalian.
+          Terimakasih sudah jadi bagian keluarga, maaf kalau pernah buat luka di hati kamu yang mana aku ga sadar sampai
+          saat ini mungkin.
+          Happy birthday liaa, serta mulia, semoga sehat selu, lancar rejeki, dan LANCAR SKRIPSI.... AMIIN
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="trip" class="sec">
+      <h2 class="rv" data-d="up">Blom main di RL, Main game pun GASSSS</h2>
+      <p class="sub rv" data-d="up">Petualangan mabar kita, geser ke samping</p>
+      <div class="rail rv" data-d="z" id="rail">
+        <article class="tile"><img src="assets/5.png" alt="Berdua di puncak Gunung Ciremai">
+          <h3>Gunung ciremai</h3>
+          <p class="ph">09 Maret 2026</p>
+        </article>
+        <article class="tile"><img src="assets/6.png" alt="Pose berdua di puncak saat matahari terbit">
+          <h3>Gunung ciremai lagi wkwk soalnya bagus</h3>
+          <p class="ph">09 Maret 2026</p>
+        </article>
+        <article class="tile"><img src="assets/8.png" alt="Momen seru di jembatan besi">
+          <h3>Puncak aquarium lupa di mount apa hehe</h3>
+          <p class="ph">25 Maret 2026</p>
+        </article>
+        <article class="tile"><img src="assets/9.png" alt="Foto bareng di puncak Gunung Kazehara">
+          <h3>Cobain map nya abe</h3>
+          <p class="ph">30 Agustus 2026</p>
+        </article>
+      </div>
+      <div class="dots rv" data-d="up" id="dots"></div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="wish" class="sec">
+      <h2 class="rv" data-d="up">Wish for Liaa</h2>
+      <div class="card wish rv" data-d="z">
+        <p class="ph">Semoga lia selalu dimudahkan urusannya, selalu cantik dan ceria, lancar rejekinya. SEMOGA KITA
+          BISA KETEMU DAN MAIN BENERAN TAUN DEPAN... AAMIIIINNNNNNN</p>
+        <div class="sign">dari kak gyu cantik :D ♡</div>
+      </div>
+      <button class="btn rv" data-d="up" id="party2">Satu confetti lagi 🎂</button>
+    </section>
+    <footer>Dibuat dengan ♡ untuk Liaa</footer>
+  </main>
+
+  <script>
+    (function () {
+      var $ = function (s) { return document.querySelector(s) };
+      var CODE = "2311";
+      /* hearts */
+      var H = $("#hearts"), sym = ["♡", "♥", "✿", "❀"];
+      for (var i = 0; i < 16; i++) {
+        var e = document.createElement("i"); e.textContent = sym[i % 4];
+        e.style.cssText = "left:" + Math.random() * 100 + "%;font-size:" + (12 + Math.random() * 20) + "px;color:#ff6fa5;animation-duration:" + (9 + Math.random() * 12) + "s;animation-delay:" + (-Math.random() * 15) + "s"; H.appendChild(e)
+      }
+      /* confetti */
+      var cv = $("#cf"), cx = cv.getContext("2d"), P = [], run = false;
+      function size() { cv.width = innerWidth; cv.height = innerHeight } size(); addEventListener("resize", size);
+      function boom(n) {
+        var c = ["#ff6fa5", "#ffb6d0", "#e8407f", "#fff", "#ffd54f"];
+        for (var i = 0; i < (n || 120); i++)P.push({ x: innerWidth / 2, y: innerHeight * .6, vx: (Math.random() - .5) * 14, vy: -Math.random() * 16 - 4, s: 4 + Math.random() * 6, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: c[i % 5], l: 1 });
+        if (!run) { run = true; tick() }
+      }
+      function tick() {
+        cx.clearRect(0, 0, cv.width, cv.height);
+        P = P.filter(function (p) { p.vy += .35; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.l -= .008; return p.l > 0 && p.y < cv.height + 20 });
+        P.forEach(function (p) { cx.save(); cx.globalAlpha = Math.max(p.l, 0); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); cx.restore() });
+        if (P.length) requestAnimationFrame(tick); else run = false
+      }
+      $("#party").onclick = $("#party2").onclick = function () { boom(140) };
+      /* PIN */
+      var ins = [].slice.call(document.querySelectorAll("#pin input")), pin = $("#pin"), msg = $("#msg");
+      function val() { return ins.map(function (x) { return x.value }).join("") }
+      function check() {
+        var v = val(); if (v.length < 4) return;
+        if (v === CODE) {
+          msg.textContent = ""; ins.forEach(function (x) { x.blur(); x.disabled = true });
+          $("#cake").classList.add("blow"); boom(160);
+          setTimeout(function () { $("#gate").classList.add("out"); $("#main").classList.add("show"); scrollTo(0, 0); watch(); startBgm(); }, 1300);
+          setTimeout(function () { $("#gate").style.display = "none" }, 2300)
+        }
+        else {
+          msg.textContent = "Belum tepat, coba ingat lagi ya ♡"; pin.classList.remove("bad"); void pin.offsetWidth; pin.classList.add("bad");
+          setTimeout(function () { ins.forEach(function (x) { x.value = "" }); ins[0].focus() }, 450)
+        }
+      }
+      ins.forEach(function (el, i) {
+        el.addEventListener("input", function () { el.value = el.value.replace(/\D/g, "").slice(-1); if (el.value && ins[i + 1]) ins[i + 1].focus(); check() });
+        el.addEventListener("keydown", function (e) { if (e.key === "Backspace" && !el.value && ins[i - 1]) { ins[i - 1].focus(); ins[i - 1].value = "" } });
+        el.addEventListener("paste", function (e) {
+          var t = (e.clipboardData.getData("text") || "").replace(/\D/g, "").slice(0, 4); if (!t) return; e.preventDefault();
+          t.split("").forEach(function (c, k) { ins[k].value = c }); check()
+        })
+      });
+      /* reveal in & out */
+      function watch() {
+        var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("in", e.isIntersecting) }) }, { threshold: .18 });
+        document.querySelectorAll(".rv").forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 90 + "ms"; io.observe(el) })
+      }
+      /* progress bar */
+      var bar = $("#bar"); function pr() { var h = document.documentElement.scrollHeight - innerHeight; bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + "%" }
+      addEventListener("scroll", pr, { passive: true });
+      /* dots */
+      var rail = $("#rail"), tiles = rail.children, dots = $("#dots");
+      for (var k = 0; k < tiles.length; k++) { dots.appendChild(document.createElement("i")) }
+      function dt() {
+        var c = rail.scrollLeft + rail.clientWidth / 2, b = 0, bd = 1e9;
+        for (var k = 0; k < tiles.length; k++) { var d = Math.abs(tiles[k].offsetLeft + tiles[k].offsetWidth / 2 - c); if (d < bd) { bd = d; b = k } }
+        [].forEach.call(dots.children, function (x, k) { x.classList.toggle("on", k === b) })
+      }
+      rail.addEventListener("scroll", dt, { passive: true }); dt();
+      setTimeout(function () { ins[0].focus() }, 900);
+      /* audio & mute button */
+      var bgm = document.getElementById("bgm");
+      var muteBtn = document.getElementById("muteBtn");
+      var muted = false;
+      function startBgm() {
+        bgm.volume = 0.5;
+        bgm.play().catch(function () { });
+        muteBtn.style.display = "flex";
+      }
+      muteBtn.onclick = function () {
+        muted = !muted;
+        bgm.muted = muted;
+        muteBtn.classList.toggle("muted", muted);
+        muteBtn.setAttribute("aria-label", muted ? "Unmute musik" : "Mute musik");
+        muteBtn.setAttribute("title", muted ? "Unmute" : "Mute");
+      };
+    })();
+  </script>
+</body>
+
+</html>
